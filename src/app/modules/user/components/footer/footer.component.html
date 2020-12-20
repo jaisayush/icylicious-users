@@ -1,0 +1,42 @@
+<div class="footer-container">
+    <div class="container-1">
+      <h6>Subscribe to newsletter</h6>
+      <div class="field">
+        <form [formGroup]="subscribeForm" (ngSubmit)="subscribe()">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" formControlName="email" type="email" placeholder="Email ID">
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span>
+                <button [disabled]="!subscribeForm.valid" type="submit" class="button is-info">
+                  Subscribe
+                </button>
+            </span>
+          </p>
+        </form>
+      </div>
+    </div>
+    <div class="container-2">
+        <h6>Copyright &copy; 2020 Icy-Licious. All rights reserved</h6>
+    </div>
+    <div class="container-3">
+      <div>
+        <h6>Connect with us!</h6>
+      </div>
+      <div class="social">
+        <span class="icon">
+          <a href="https://wa.me/+917012483504" target="_blank" ><i class="fab fa-whatsapp fa-lg"></i></a>
+        </span>
+        <span class="icon">
+          <a><i class="fab fa-google-plus fa-lg"></i></a>
+        </span>
+        <span class="icon">
+          <a><i class="fab fa-facebook fa-lg"></i></a>
+        </span>
+        <span class="icon">
+          <a><i class="fab fa-twitter fa-lg"></i></a>
+        </span>
+      </div>
+    </div>
+</div>

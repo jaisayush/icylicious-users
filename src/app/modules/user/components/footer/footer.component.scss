@@ -1,0 +1,80 @@
+.footer-container{
+    position: fixed;
+    background-color: #e91e63;
+    height: 13%;
+    width: 100%;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-between;
+    div{
+        flex-direction: column;
+    }
+    .container-1{
+        margin-top: .5%;
+        width: 33%;
+        color: white;
+        margin-left: 1%;
+        .subs-btn{
+            padding-left: 10%;
+        }
+        input{
+            width: 55%;
+        }
+    }
+    .container-2{
+        width: 40%;
+        color: white;
+        h6{
+            padding-left: 20%;
+            padding-top: 7%
+        }
+    }
+    .container-3{
+        padding-top: 1%;
+        width: 33%;
+        h6{
+            padding-left: 52%;
+            color: white;
+        }
+        .social{
+            padding-left: 45%;
+            color: white;
+            a{
+                color: white;
+            }
+            span{
+                margin-left: 7%;
+                :hover{
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+@media all and(max-width:800px){
+    .footer-container{
+        height: 35%;
+        display: block;
+        .container-1{
+            width: 100%;
+        }
+        .container-2{
+            width: 100%;
+            h6{
+                padding-left: 5%;
+                padding-bottom: 3%;
+            }
+        }
+        .container-3{
+            align-content: center;
+            .social{
+                padding-left: 20%;
+            }
+            h6{
+                padding-left: 30%;
+            }
+            width: 100%;
+        }
+    }
+}
