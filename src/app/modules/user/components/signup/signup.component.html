@@ -1,28 +1,29 @@
 <app-header></app-header>
-<div class="container-fluid" class="div-container">
-    <h1>Add User</h1>
+<div class="form-back">
+  <div class="container-fluid div-container input-container">
+    <!-- <h4>Add User</h4> -->
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label>First Name</label>
-        <input [class.is-invalid]="firstName.invalid 
-        && firstName.touched " formControlName="firstName" type="text" class="form-control">
-        <div *ngIf="firstName.invalid && firstName.touched ">
-          <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+        <label>Name</label>
+        <input [class.is-invalid]="name.invalid 
+        && name.touched " formControlName="name" type="text" class="form-control">
+        <div *ngIf="name.invalid && name.touched ">
+          <small *ngIf="name.errors?.required" class="text-danger">name is required</small>
         </div>
       </div>
-      <div class="form-group">
-        <label>Last Name</label>
-        <input formControlName="lastName" type="text" class="form-control">
-      </div>
+
       <div class="form-group">
         <label>Email</label>
         <input [class.is-invalid]="email.invalid 
-        && email.touched || emailAlredyExist " formControlName="email" type="text" class="form-control" (change)="emailCheck()">
-        <small *ngIf="emailAlredyExist" class="text-danger">email aleady exists</small>
-        <div *ngIf="email.invalid && email.touched ">
-          <small *ngIf="email.errors?.required" class="text-danger">email is required</small>
-          <small *ngIf="email.errors?.email" class="text-danger">enter valid email address</small>
-         
+        && email.touched " formControlName="emailID" type="email" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input [class.is-invalid]="phone.invalid && phone.touched " formControlName="phone" type="tel" class="form-control">
+        <div *ngIf="phone.invalid && phone.touched">
+          <small *ngIf="phone.errors?.required" class="text-danger">phone number is required</small>
+          <small *ngIf="phone.errors?.minlength || phone.errors?.maxlength" class="text-danger">phone number should be 10 digits</small>
         </div>
       </div>
 
@@ -59,20 +60,13 @@
         <label>Answer</label>
         <input [class.is-invalid]="answer.invalid && answer.touched " formControlName="answer" type="text" class="form-control">
         <div *ngIf="answer.invalid && answer.touched">
-          <small *ngIf="answer.errors?.required" class="text-danger">age is required</small>
+          <small *ngIf="answer.errors?.required" class="text-danger">answer is required</small>
           <small *ngIf="answer.errors?.min" class="text-danger">answer should be min 3 character length</small>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Age</label>
-        <input [class.is-invalid]="age.invalid && age.touched " formControlName="age" type="number" class="form-control">
-        <div *ngIf="age.invalid && age.touched">
-          <small *ngIf="age.errors?.required" class="text-danger">age is required</small>
-          <small *ngIf="age.errors?.min || age.errors?.max" class="text-danger">age should be between 21 and 60</small>
         </div>
       </div>
 
       <button [disabled]="!registrationForm.valid" class="btn btn-primary" type="submit">Register</button>
     </form>
   </div>
+</div>
 <app-footer></app-footer>
