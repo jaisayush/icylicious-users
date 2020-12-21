@@ -33,16 +33,17 @@ export class RegistrationComponent implements OnInit {
       .then(()=>{
           this._registrationService.emailCheckUnique(this.email)
           .subscribe(res => {
-          if (res === null) {
+          console.log(res)
+          if (res != null) {
+            this.emailAlredyExist = true;
+            console.log("email already exist");
+          }
+          else{
             this.emailAlredyExist = false;
             if(this.email != null){
               console.log(this.email)
             }
-            this.router.navigate(['signup',{email:this.email}],{skipLocationChange:true})
-          }
-          else{
-            this.emailAlredyExist = true;
-            alert("email already exist")
+            this.router.navigate(['signup',{email:this.email}],{skipLocationChange:true})            
           }
     });
       })
