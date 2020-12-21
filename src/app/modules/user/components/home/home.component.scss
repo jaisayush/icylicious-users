@@ -1,0 +1,113 @@
+.body {
+  background-color: #fa8bff;
+  background-image: linear-gradient(
+    45deg,
+    #fa8bff 0%,
+    #2bd2ff 52%,
+    #2bff88 90%
+  );
+}
+main {
+  background-image: url("https://raw.githubusercontent.com/jaisayush/IceCream_Images/main/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .store-name {
+    color: coral;
+    font-size: 100px;
+    font-weight: bolder;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    text-shadow: 4px -3px 2px rgb(255, 0, 0);
+  }
+}
+
+.about-us {
+  background: linear-gradient(
+    90deg,
+    rgba(37, 254, 197, 1) 0%,
+    rgba(246, 247, 247, 1) 100%
+  );
+  display: flex;
+  justify-content: space-around;
+  height: fit-content;
+  .left {
+    padding: 25px 40px 0px 40px;
+    h1 {
+      color: coral;
+      font-weight: bolder;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+  }
+  .right {
+    padding: 25px 50px 75px 0px;
+    background-image: url("https://www.livemorezone.com/wp-content/uploads/naturals-ice-cream-healthy-icecream-in-mumbai-livemorezone-dbs.jpg");
+    height: 50vh;
+    width: 260rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.contact-us {
+  h1 {
+    color: coral;
+    font-weight: bolder;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  background-image: linear-gradient(
+    109.6deg,
+    rgba(255, 219, 47, 1) 11.2%,
+    rgba(244, 253, 0, 1) 100.2%
+  );
+
+  display: flex;
+  justify-content: space-around;
+  height: fit-content;
+  padding-bottom: 15vh;
+  .contact-left {
+    padding: 25px 40px 0px 40px;
+  }
+  .contact-right {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+.products {
+  h1 {
+    color: coral;
+    font-weight: bolder;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+  padding: 25px 40px 0px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .about-us {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+  }
+  .contact-us {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    margin-bottom: 30vh;
+    .contact-right {
+      padding-left: 1vh;
+      padding-right: 1vh;
+    }
+  }
+}
