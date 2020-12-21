@@ -1,0 +1,38 @@
+.form-back{
+    background-color: white;
+    border-radius: 3%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    width: 28%;
+    height: 560px;
+    overflow-y: scroll;
+    margin: 2%;
+    padding: 2% 0%;
+}
+
+.form-back::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+.form-back::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+.form-back::-webkit-scrollbar-thumb
+{
+	background-color: #e91e63;
+}
+
+
+
+.input-container{
+    width: 85%;
+}
+
+
+@media all and(max-width:600px){
+    .form-back{
+        width: 95%;
+    }
+}
