@@ -12,6 +12,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { SignupComponent } from './components/signup/signup.component';
 import { ResetComponent } from './components/reset/reset.component';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent],
@@ -19,6 +23,10 @@ import { ResetComponent } from './components/reset/reset.component';
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule
   ]
 })
 export class UserModule { }
