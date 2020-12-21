@@ -10,7 +10,10 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SignupComponent } from './components/signup/signup.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent],
@@ -18,6 +21,10 @@ import { SignupComponent } from './components/signup/signup.component';
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule
   ]
 })
 export class UserModule { }
