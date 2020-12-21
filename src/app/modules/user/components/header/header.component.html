@@ -1,2 +1,35 @@
-<a routerLink="">Home</a>
-<a routerLink="shop">Shopping</a>
+<!-- <a routerLink="">Home</a>
+<a routerLink="shop">Shopping</a> -->
+<mat-toolbar color="accent"> 
+    <span><img src="../assets/clientlogoFinal.png"/></span>
+    <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <span id="tabs">
+        <button mat-raised-button>Home</button>
+        <button mat-raised-button>About Us</button>
+        <button mat-raised-button>Menu</button>
+        <button mat-raised-button>Contact</button>
+      </span>
+    </div>
+  
+    <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-raised-button><div id="loginbtn"><mat-icon>person_outline</mat-icon>Login</div></button>
+    </div>
+    
+  
+    <button id="menubtn" mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+     <mat-icon>menu</mat-icon>
+    </button>
+  
+  </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item routerLink="">Home</button>
+    <button mat-menu-item routerLink="">About Us</button>
+    <button mat-menu-item routerLink="">Menu</button>
+    <button mat-menu-item routerLink="">Contact</button>
+    <button mat-menu-item routerLink="">Login</button>
+  </mat-menu>
+  
+  
+  
+  
+  <router-outlet></router-outlet>
