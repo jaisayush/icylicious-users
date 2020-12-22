@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
   }
 
   subscribeForm = this.fb.group({
-    email: ['',[Validators.required,Validators.email]],
+    email: ['',[Validators.required,Validators.email,Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
   })
 
   subscribe(){
@@ -33,6 +33,16 @@ export class FooterComponent implements OnInit {
   
   
   
+  }
+
+  showViewModal: boolean;
+
+  showView() {
+    this.showViewModal = true;
+  }
+
+  closeModal() {
+    this.showViewModal = false;
   }
 
 
