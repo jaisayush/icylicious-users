@@ -6,7 +6,7 @@
       <span id="tabs">
         <button mat-button routerLink="">Home</button>
         <button mat-button>About Us</button>
-        <button mat-button>Store</button>
+        <button mat-button routerLink="/shop">Store</button>
         <button mat-button>Contact</button>
       </span>
     </div>
@@ -26,7 +26,7 @@
   <mat-menu x-position="before" #menu="matMenu">
     <button mat-menu-item routerLink="">Home</button>
     <button mat-menu-item routerLink="">About Us</button>
-    <button mat-menu-item routerLink="">Store</button>
+    <button mat-menu-item routerLink="/shop">Store</button>
     <button mat-menu-item routerLink="">Contact</button>
     <button mat-menu-item (click)="showLogin()" *ngIf="!logged" routerLink="">Login</button>
   </mat-menu>

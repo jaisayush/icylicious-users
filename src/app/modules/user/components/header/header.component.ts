@@ -56,6 +56,7 @@ export class HeaderComponent implements OnInit {
             localStorage.setItem('userLogged', "true");
             localStorage.setItem('id', response.id.toString());
             localStorage.setItem('userToken', response.usertoken.toString());
+            localStorage.setItem('email', response.email.toString());
             this.loginForm.reset();
             this.route.navigate(['/']);
             this.hide();
