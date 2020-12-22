@@ -16,9 +16,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 @NgModule({
-  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent],
+  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent, UpdatePasswordComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
