@@ -9,7 +9,8 @@
               <i class="fas fa-envelope"></i>
             </span>
             <span>
-                <button [disabled]="!subscribeForm.valid" type="submit" class="button is-info">
+                <button [disabled]="!subscribeForm.valid" type="submit" class="button is-info" data-toggle="modal"
+                (click)="showView()" data-target="#detailModal">
                   Subscribe
                 </button>
             </span>
@@ -39,4 +40,26 @@
         </span>
       </div>
     </div>
+</div>
+
+<div [style.display]="showViewModal ? 'flex' : 'none'" class="modal" style="color: rgb(247, 57, 89);">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <h3 class="modal-title" style="color: rgb(233, 37, 158); font-family: cursive;">😀Thanks for Subscribing our Website😀</h3>
+    </header>
+    <section class="modal-card-body">
+      <p>We will keep you updated with our discounts and offers via your shared email id</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button
+        type="button"
+        (click)="closeModal()"
+        class="btn btn-warning"
+        data-dismiss="modal"
+      >
+        Close
+      </button>
+    </footer>
+  </div>
 </div>

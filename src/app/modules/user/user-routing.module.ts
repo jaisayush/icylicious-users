@@ -9,6 +9,7 @@ import { ViewProductsComponent } from './components/view-products/view-products.
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 import { UserComponent } from './user.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: UserComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'register',component:RegistrationComponent},
   {path:'signup',component:SignupComponent},
   {path:'reset',component:ResetComponent},
-  {path:'update',component:UpdatePasswordComponent}
+  {path:'update',component:UpdatePasswordComponent},
+  {path:'profile',component:ProfileComponent}
 ];
 
 @NgModule({
