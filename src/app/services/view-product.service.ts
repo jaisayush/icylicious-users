@@ -15,15 +15,17 @@ export class ViewProductService {
 
 
   constructor(private httpClient:HttpClient,private router:Router) { }
-
+ 
+  
   getProducts(){
-    const header = new HttpHeaders({
+   const header = new HttpHeaders({
       'Authorization': localStorage.getItem('userToken') });
-
     return this.httpClient.get(this.url, {headers: header});
   }
   createCart(productdata){
-    return this.httpClient.post(this.setCartUrl,productdata);
+   const header = new HttpHeaders({
+      'Authorization': localStorage.getItem('userToken') });
+    return this.httpClient.post(this.setCartUrl,productdata, {headers: header});
   }
 
 }
