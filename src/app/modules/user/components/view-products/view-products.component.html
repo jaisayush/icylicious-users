@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div *ngIf="emptyProducts" class="container is-max-desktop">
+    <div class="notification is-danger">
+      <h2 style="text-align: center">Empty Products</h2>
+    </div>
+</div>
+<div class="field">
+    <label class="label">Type</label>
+    <div class="control">
+      <div class="select is-small">
+        <select
+          class="form-control" id="type" (change)="ontype()">
+          <option value="" disabled >Select Type</option>
+          <option value="all" selected>All Products</option>
+          <option value="classic">Classic</option>
+          <option value="special">Special</option>
+        </select>
+      </div>
+    </div>
+  </div>
+<ul>
+    <li *ngFor="let product of newProducts">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title style="word-break:break-all">
+                    {{product.productName}}
+                </mat-card-title>
+                <mat-card-subtitle>{{product.productType}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{product.productImage}}"
+            alt="{{product.productName}}"/> 
+        <mat-card-content>
+            <p style="word-break: break-all; color:rgb(37, 36, 36) ;">{{product.productDescription}}</p>
+            <p><b>Price:</b>{{product.productPrice  | currency:"INR" }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="accent" id="button{{ product.productId }}" (click)="productDetails(product.productId)">ADD TO CART</button>
+        </mat-card-actions>
+    </mat-card>
+    <br/>
+    <br/>
+    </li>
+</ul>
+
+
+<!-- <div class="footerSpace">
+</div> -->
+<app-footer></app-footer>
