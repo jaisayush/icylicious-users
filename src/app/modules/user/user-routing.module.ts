@@ -5,6 +5,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ResetComponent } from './components/reset/reset.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 import { UserComponent } from './user.component';
 
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:'shop',component:ShoppingComponent},
   {path:'register',component:RegistrationComponent},
   {path:'signup',component:SignupComponent},
-  {path:'reset',component:ResetComponent}
+  {path:'reset',component:ResetComponent},
+  {path:'update',component:UpdatePasswordComponent}
 ];
 
 @NgModule({

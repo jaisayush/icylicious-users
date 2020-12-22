@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
   selector: 'app-reset',
@@ -21,7 +22,7 @@ export class ResetComponent implements OnInit {
     return this.resetForm.get('answer');
   }
 
-  constructor(private fb:FormBuilder,private router:Router) { }
+  constructor(private fb:FormBuilder,private router:Router,private registrationService:RegistrationService) { }
   resetForm = this.fb.group({
     email: ['',[Validators.required,Validators.email]],
     question: ['',[Validators.required]],
@@ -40,22 +41,22 @@ export class ResetComponent implements OnInit {
 
   onSubmit(){
     console.log(this.resetForm.value)
-    // this._registrationService.reset(this.resetForm.value)
-    //   .subscribe(
-    //     response => {
-    //       console.log(response)
-    //       if(response.msg === "invalid" || response.msg === "failed"){
-    //         this.resetForm.reset();
-    //         this.failed = true;
-    //       }
-    //       else{
-    //         this.router.navigate(['change',{email:response.email}],{skipLocationChange:true})
-    //         this.resetForm.reset();
-    //       }
+    this.registrationService.reset(this.resetForm.value)
+      .subscribe(
+        response => {
+          console.log(response)
+          if(response.msg === "invalid" || response.msg === "failed"){
+            this.resetForm.reset();
+            this.failed = true;
+          }
+          else{
+            this.router.navigate(['update',{email:response.email}],{skipLocationChange:true})
+            this.resetForm.reset();
+          }
           
-    //     },
-    //     error => console.log("error!",error)
-    //   );
+        },
+        error => console.log("error!",error)
+      );
     // this.resetForm.reset();
   }
 
