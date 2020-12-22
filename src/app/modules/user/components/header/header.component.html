@@ -13,11 +13,11 @@
   
     <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
       <button mat-button *ngIf="logged"><div id="loginbtn"><mat-icon>shopping_cart</mat-icon></div></button>
-      <button mat-button *ngIf="logged"><div id="loginbtn"><mat-icon>person</mat-icon></div></button>
+      <button mat-button (click)="showDelete()" *ngIf="logged"><div id="loginbtn"><mat-icon>person</mat-icon></div></button>
       <button mat-button (click)="showLogin()" *ngIf="!logged">Login</button>
     </div>
     
-  
+    <button  mat-button *ngIf="logged" fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon>shopping_cart</mat-icon></div></button>
     <button id="menubtn" mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
      <mat-icon>menu</mat-icon>
     </button>
@@ -29,6 +29,7 @@
     <button mat-menu-item routerLink="/shop">Store</button>
     <button mat-menu-item routerLink="">Contact</button>
     <button mat-menu-item (click)="showLogin()" *ngIf="!logged" routerLink="">Login</button>
+    <button mat-menu-item (click)="showDelete()" *ngIf="logged">Logout</button>
   </mat-menu>
   
 
@@ -96,6 +97,39 @@
     <small>dont have an account ?</small>
     <br>
     <button class="btn btn-primary" routerLink="/register">Create account</button>
+</div>
+<div class="modal-footer">
+  </div>
+        
+      </div>
+    </div>
+
+  <!-- Logout  -->
+
+
+  <div
+    [style.display]="showDeleteModal ? 'block' : 'none'"
+    class="modal"
+    id="imagemodal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">Logout</h5>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="closeModal()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      
 </div>
 <div class="modal-footer">
   </div>

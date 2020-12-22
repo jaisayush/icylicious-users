@@ -6,31 +6,21 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ViewProductService {
-  token;
-  getToken(){
-    this.token = localStorage.getItem('token');
-    if(this.token != 'undefined'){
-      return this.token;
-    }
-    // else{
-    //   this.router.navigate(['admin'])
-    // }
+  
 
-  }
-
-  header = new HttpHeaders({
-    'Authorization': this.getToken() });
-
-  // url = 'https://icylicious.herokuapp.com/products';
-  url='http://localhost:3000/products';
-  setCartUrl='http://localhost:3000/setcart';
-  // setCartUrl='https://sumit-icylicious-sep-20.herokuapp.com/setCart';
+  url = 'https://icylicious.herokuapp.com/products';
+  // url='http://localhost:3000/products';
+  // setCartUrl='http://localhost:3000/setcart';
+  setCartUrl='https://sumit-icylicious-sep-20.herokuapp.com/setCart';
 
 
   constructor(private httpClient:HttpClient,private router:Router) { }
 
   getProducts(){
-    return this.httpClient.get(this.url);
+    const header = new HttpHeaders({
+      'Authorization': localStorage.getItem('userToken') });
+
+    return this.httpClient.get(this.url, {headers: header});
   }
   createCart(productdata){
     return this.httpClient.post(this.setCartUrl,productdata);
