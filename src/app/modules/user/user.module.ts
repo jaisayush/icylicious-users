@@ -10,14 +10,24 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { ResetComponent } from './components/reset/reset.component';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 @NgModule({
-  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent],
+  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent, UpdatePasswordComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule
   ]
 })
 export class UserModule { }

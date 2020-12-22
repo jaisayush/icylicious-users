@@ -1,2 +1,104 @@
-<a routerLink="">Home</a>
-<a routerLink="shop">Shopping</a>
+<!-- <a routerLink="">Home</a>
+<a routerLink="shop">Shopping</a> -->
+<mat-toolbar color="accent"> 
+    <span><img src="../assets/clientlogoFinal.png"/></span>
+    <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <span id="tabs">
+        <button mat-button routerLink="">Home</button>
+        <button mat-button>About Us</button>
+        <button mat-button routerLink="/shop">Store</button>
+        <button mat-button>Contact</button>
+      </span>
+    </div>
+  
+    <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button *ngIf="logged"><div id="loginbtn"><mat-icon>shopping_cart</mat-icon></div></button>
+      <button mat-button *ngIf="logged"><div id="loginbtn"><mat-icon>person</mat-icon></div></button>
+      <button mat-button (click)="showLogin()" *ngIf="!logged">Login</button>
+    </div>
+    
+  
+    <button id="menubtn" mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+     <mat-icon>menu</mat-icon>
+    </button>
+  
+  </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item routerLink="">Home</button>
+    <button mat-menu-item routerLink="">About Us</button>
+    <button mat-menu-item routerLink="/shop">Store</button>
+    <button mat-menu-item routerLink="">Contact</button>
+    <button mat-menu-item (click)="showLogin()" *ngIf="!logged" routerLink="">Login</button>
+  </mat-menu>
+  
+
+
+
+  <!-- Login  -->
+
+  
+
+
+<div
+    [style.display]="showModal ? 'block' : 'none'"
+    class="modal"
+    id="imagemodal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">Login</h5>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="hide()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+              <input [class.is-invalid]="email.invalid 
+              && email.touched "formControlName="email" type="email" class="form-control" placeholder="Email" (ngModelChange)="onChange()">       
+              <div *ngIf="email.invalid && email.touched">
+                <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+                <small *ngIf="email.errors?.email" class="text-danger">Enter valid email id</small>
+              </div>
+        </div>
+          
+          <div class="form-group">
+            <input [class.is-invalid]="password.invalid 
+            && password.touched "formControlName="password" type="password" class="form-control" placeholder="Password" (ngModelChange)="onChange()">       
+            <div *ngIf="password.invalid && password.touched">
+                <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+            </div>
+        </div>
+        <div>
+            <a routerLink='/reset'>forgot password?</a>
+        </div>
+        <br>
+          <div class="field">
+              <button [disabled]="!loginForm.valid" class="button is-success">
+                Login
+              </button>
+          </div>
+          <div class="fail-msg">
+            <h6 *ngIf="failed" class="text-danger">Invalid User Credentials!</h6>
+            <h6 *ngIf="wrongPass" class="text-danger">Incorrect Password</h6>
+        </div>
+    </form>
+    <small>dont have an account ?</small>
+    <br>
+    <button class="btn btn-primary" routerLink="/register">Create account</button>
+</div>
+<div class="modal-footer">
+  </div>
+        
+      </div>
+    </div>
