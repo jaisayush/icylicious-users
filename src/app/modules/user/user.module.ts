@@ -13,15 +13,26 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ViewProductsComponent } from './components/view-products/view-products.component';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ResetComponent } from './components/reset/reset.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
-  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ViewProductsComponent],
+  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent, UpdatePasswordComponent,ViewProductsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    FlexLayoutModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule
   ]
 })
 export class UserModule { }

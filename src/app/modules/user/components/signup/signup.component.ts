@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { RegistrationService } from 'src/app/services/registration.service';
 import { ConfirmedValidator } from '../../../../services/confirmed.validator';
 
 @Component({
@@ -10,14 +11,11 @@ import { ConfirmedValidator } from '../../../../services/confirmed.validator';
 })
 export class SignupComponent implements OnInit {
 
-  get firstName(){
-    return this.registrationForm.get('firstName')
-  }
-  get lastName(){
-    return this.registrationForm.get('lastName')
+  get name(){
+    return this.registrationForm.get('name')
   }
   get email(){
-    return this.registrationForm.get('email')
+    return this.registrationForm.get('emailID')
   }
 
   get password(){
@@ -28,8 +26,8 @@ export class SignupComponent implements OnInit {
     return this.registrationForm.get('confirmPassword')
   }
 
-  get age(){
-    return this.registrationForm.get('age')
+  get phone(){
+    return this.registrationForm.get('phone')
   }
 
   get question(){
@@ -40,52 +38,34 @@ export class SignupComponent implements OnInit {
     return this.registrationForm.get('answer')
   }
 
-  constructor(private fb:FormBuilder,private route:ActivatedRoute) { }
+  constructor(private fb:FormBuilder,private route:ActivatedRoute, private _registrationService:RegistrationService) { }
 
   ngOnInit(): void {
   }
 
   registrationForm = this.fb.group({
-    firstName: ['',[Validators.required]],
-    lastName: [''],
-    email: [{value: this.route.snapshot.paramMap.get('email'), disabled: true}],
+    name: ['',[Validators.required]],
+    emailID: [{value: this.route.snapshot.paramMap.get('email'), disabled: true}],
     password: ['',[Validators.required,Validators.minLength(8)]],
     confirmPassword: ['',[Validators.required,Validators.minLength(8)]],
     question: ['',[Validators.required]],
     answer: ['',[Validators.required,Validators.minLength(3)]],
-    age : ['',[Validators.required,Validators.min(21),Validators.max(60)]]
+    phone : ['',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]]
   },{
     validator: ConfirmedValidator('password', 'confirmPassword')
   })
 
   onSubmit(){
-    if(this.registrationForm.value.lastName===''){
-      this.registrationForm.patchValue({
-        lastName: 'NA'
-      })
-    }
-    console.log(this.registrationForm.value)
-    // this._registrationService.register(this.registrationForm.getRawValue())
-    //   .subscribe(
-    //     response => console.log("success",response),
-    //     error => console.log("error!",error)
-    //   );
-    // this.registrationForm.reset();
+    console.log(this.registrationForm);
+    this.registrationForm.addControl('email', this.fb.control('', Validators.required));   
+    this.registrationForm.patchValue({['email']:this.route.snapshot.paramMap.get('email')})
+    this._registrationService.register(this.registrationForm.value)
+      .subscribe(
+        response => console.log("success",response),
+        error => console.log("error!",error)
+      );
+    this.registrationForm.reset();
   }
-  public emailAlredyExist:boolean = false;
-  emailCheck(){
-    // this._registrationService.emailCheckUnique(this.registrationForm.value.email)
-    //   .subscribe(res => {
-    //     console.log(res)
-    //     if (res === null) {
-    //       this.emailAlredyExist = false;
-    //     }
-    //     else{
-    //       this.emailAlredyExist = true;
-    //     }
-    // });
-  }
-
 
 
 }
