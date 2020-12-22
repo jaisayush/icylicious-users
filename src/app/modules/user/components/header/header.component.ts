@@ -80,4 +80,23 @@ export class HeaderComponent implements OnInit {
     this.showModal = false;
   }
 
+
+  public showDeleteModal:boolean;
+
+  showDelete(){
+    this.showDeleteModal = true;
+  }
+
+  closeModal(){
+    this.showDeleteModal = false;
+  }
+
+  logout(){
+    this.route.navigate([''])
+    localStorage.removeItem('userLogged');
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('email');
+  }
+
 }
