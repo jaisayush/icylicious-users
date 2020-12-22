@@ -10,14 +10,18 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SignupComponent } from './components/signup/signup.component';
-
-
+import { ViewProductsComponent } from './components/view-products/view-products.component';
+import {MatCardModule} from '@angular/material/card';
+import { BrowserModule } from '@angular/platform-browser';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
-  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent],
+  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ViewProductsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class UserModule { }
