@@ -71,6 +71,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public showModal:boolean;
+
   
   showLogin(){
     this.showModal = true;
@@ -81,22 +82,24 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  public showDeleteModal:boolean;
+  // public logoutModal:boolean;
 
-  showDelete(){
-    this.showDeleteModal = true;
-  }
+  // showLogout(){
+  //   console.log('click')
+  //   this.logoutModal = true;
+  // }
 
-  closeModal(){
-    this.showDeleteModal = false;
-  }
+  // closeModal(){
+  //   this.logoutModal = false;
+  // }
 
   logout(){
     this.route.navigate([''])
     localStorage.removeItem('userLogged');
-    localStorage.removeItem('token');
+    localStorage.removeItem('userToken');
     localStorage.removeItem('id');
     localStorage.removeItem('email');
   }
+  
 
 }
