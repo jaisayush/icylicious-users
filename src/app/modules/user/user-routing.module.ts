@@ -11,6 +11,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 import { UserComponent } from './user.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './auth.guard';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path:'reset',component:ResetComponent},
   {path:'update',component:UpdatePasswordComponent},
-  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]}
+  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
+  {path:'checkout',component:CheckoutComponent}
 ];
 
 @NgModule({
