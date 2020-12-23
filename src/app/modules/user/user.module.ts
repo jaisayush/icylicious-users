@@ -22,6 +22,7 @@ import { ResetComponent } from './components/reset/reset.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent, UpdatePasswordComponent,ViewProductsComponent, ProfileComponent, CheckoutComponent],
@@ -34,7 +35,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     FlexLayoutModule,
     MatIconModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatBadgeModule
   ]
 })
 export class UserModule { }
