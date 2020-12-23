@@ -3,3 +3,56 @@ app-footer{
     position: absolute;
     bottom: 0%;
   }
+
+  .profile-container{
+    display: flex;
+    div{
+      margin-left: 3%;
+      flex-direction: column;
+    }
+    .profile{
+      width: 20%;
+      .avatar {
+        margin-left : 40%;
+        margin-top: 15%;
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .details{
+        h5{
+          margin-left: 5%;
+        }
+        margin-left: 45%;
+        margin-top: 5%;
+      }
+      .buttons{
+        margin: 0%;
+        padding: 0%;
+      }
+    }
+    .vl {
+      margin-top: 1%;
+      border-left: 3px solid pink;
+      height: 400px;
+    }
+  }
+
+  @media all and(max-width:1000px){
+    .vl{
+      display: none;
+    }
+  }
+
+  @media all and(max-width:600px){
+    .profile-container{
+      display: flex;
+    }
+    .profile{
+      width: 100%;
+    }
+    app-footer{
+      width: 100%;
+    }
+  }

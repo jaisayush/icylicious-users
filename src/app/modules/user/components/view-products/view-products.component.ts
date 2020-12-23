@@ -12,6 +12,7 @@ export class ViewProductsComponent implements OnInit {
   public products:any=[];
   public newProducts:any=[];
   // userId:"navaneetha@gmail.com";
+  showViewModal:boolean;
   
   ontype(){
     var type = (<HTMLInputElement>document.getElementById("type")).value;
@@ -45,7 +46,6 @@ export class ViewProductsComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    
     var today = new Date().toISOString().split('T')[0];
     this.service.getProducts().subscribe((response)=>{
       // console.log("header:"+response.email);
@@ -78,6 +78,12 @@ export class ViewProductsComponent implements OnInit {
       {
         var email= localStorage.getItem("email");
         console.log("email:"+email);
+        if(email==null){
+            // alert("u need to login first");
+            this.showViewModal = true;
+        }
+        else
+      {
         product.userId=email;
         console.log("product:"+product.userId);
         this.service.createCart(product).subscribe(()=>{
@@ -87,7 +93,11 @@ export class ViewProductsComponent implements OnInit {
           btn.style.backgroundColor = "green";
         })
       }
+      }
     }
 
+  }
+  closeModal() {
+    this.showViewModal = false;
   }
 }
