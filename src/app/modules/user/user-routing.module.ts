@@ -12,6 +12,7 @@ import { UserComponent } from './user.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './auth.guard';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path:'reset',component:ResetComponent},
   {path:'update',component:UpdatePasswordComponent},
   {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
-  {path:'checkout',component:CheckoutComponent}
+  {path:'checkout',component:CheckoutComponent},
+  {path:'cart',component:CartComponent}
 ];
 
 @NgModule({
