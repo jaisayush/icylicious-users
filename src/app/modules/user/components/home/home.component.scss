@@ -8,21 +8,31 @@
   );
 }
 main {
-  background-image: url("https://raw.githubusercontent.com/jaisayush/IceCream_Images/main/bg.png");
+  background-image: url("https://raw.githubusercontent.com/jaisayush/IceCream_Images/main/sp.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
+  .content{
+    margin-left: 2%;
+    width: 25%;
+    button{
+      margin-top: -20%;
+      padding: 3% 8%;
+      margin-left: 10%;
+    }
+  }
   .store-name {
     color: #EDF2EF;
-    font-size: 100px;
+    margin-left: 2%;
+    font-size: 60px;
     font-weight: bolder;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
     // text-shadow: 4px -3px 2px rgb(255, 0, 0);
   }
 }
@@ -42,9 +52,10 @@ main {
       // text-shadow: 4px -3px 2px rgb(255, 0, 0);
     }
   }
+  
   .right {
     padding: 25px 50px 75px 0px;
-    background-image: url("https://raw.githubusercontent.com/jaisayush/IceCream_Images/main/sp.jpg");
+    background-image: url("https://raw.githubusercontent.com/jaisayush/IceCream_Images/main/bg.png");
     height: 50vh;
     width: 260rem;
     background-position: center;
@@ -92,6 +103,7 @@ main {
 @media only screen and (max-width: 768px) {
   
   .about-us {
+    width: 100%;
     display: flex;
     justify-content: space-around;
     flex-flow: row wrap;
@@ -106,10 +118,6 @@ main {
       padding-right: 1vh;
     }
   }
-}
-.btn {
-  background-color: #6a23b5;
-  color: white;
 }
 
 app-header{
