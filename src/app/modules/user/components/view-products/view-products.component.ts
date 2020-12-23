@@ -11,7 +11,8 @@ export class ViewProductsComponent implements OnInit {
   constructor(private service:ViewProductService) { }
   public products:any=[];
   public newProducts:any=[];
-  userId:"navaneetha@gmail.com";
+  // userId:"navaneetha@gmail.com";
+  showViewModal:boolean;
   
   ontype(){
     var type = (<HTMLInputElement>document.getElementById("type")).value;
@@ -45,9 +46,9 @@ export class ViewProductsComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    
     var today = new Date().toISOString().split('T')[0];
     this.service.getProducts().subscribe((response)=>{
+      // console.log("header:"+response.email);
       this.products=response;
       if(this.products.length < 1){
         this.emptyProducts=true
@@ -75,17 +76,28 @@ export class ViewProductsComponent implements OnInit {
     {
       if(product.productId==productId)
       {
-        product.userId="nava@gmail.com";
+        var email= localStorage.getItem("email");
+        console.log("email:"+email);
+        if(email==null){
+            // alert("u need to login first");
+            this.showViewModal = true;
+        }
+        else
+      {
+        product.userId=email;
         console.log("product:"+product.userId);
-        this.service.createCart(product).subscribe((response)=>{
-          console.log("response"+response);
+        this.service.createCart(product).subscribe(()=>{
           console.log("success");
           let btn = document.getElementById("button"+productId) as HTMLElement
           btn.innerHTML="Product Added";
           btn.style.backgroundColor = "green";
         })
       }
+      }
     }
 
+  }
+  closeModal() {
+    this.showViewModal = false;
   }
 }
