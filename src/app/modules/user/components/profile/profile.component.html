@@ -1,3 +1,44 @@
 <app-header></app-header>
-<p>profile works!</p>
+<div class="profile-container">
+    <div class="profile">
+        <div>
+            <img src="../../../../../assets/img_avatar.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="details">
+            <span class="icon">
+                <i class="fa fa-envelope fa-lg"></i>
+                <h5>{{email}}</h5>
+            </span>
+        </div>
+        <div class="buttons">
+            <button (click)="updatePassword()" class="btn btn-outline-primary">Update Password</button>
+            <br>
+            <button (click)="showDelete()" class="btn btn-danger">Logout</button>
+        </div>
+    </div>
+    <div class="vl"></div>
+    <div class="orders">
+        <h3>orders</h3>
+    </div>
+</div>
+
+
+<div [style.display]="showDeleteModal ? 'block' : 'none'" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Logout</p>
+        <button class="delete" (click)="closeModal()" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <h4>Are you sure want to logout ?</h4>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-danger" (click)="logout()">Confirm</button>
+        <button class="button is-warning" (click)="closeModal()">Cancel</button>
+      </footer>
+    </div>
+  </div>
+
+
 <app-footer></app-footer>

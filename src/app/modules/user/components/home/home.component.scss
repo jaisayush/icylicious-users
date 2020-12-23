@@ -13,13 +13,13 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 92vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   .store-name {
-    color: #2be6ab;
+    color: #EDF2EF;
     font-size: 100px;
     font-weight: bolder;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -28,7 +28,7 @@ main {
 }
 
 .about-us {
-  background-color: #6a23b5;
+  background-color: #57c4e5;
   color: white;
   display: flex;
   justify-content: space-around;
@@ -36,7 +36,7 @@ main {
   .left {
     padding: 25px 40px 0px 40px;
     h1 {
-      color: #2be6ab;
+      color: #EDF2EF;
       font-weight: bolder;
       font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
       // text-shadow: 4px -3px 2px rgb(255, 0, 0);
@@ -54,9 +54,8 @@ main {
 }
 .contact-us {
   h1 {
-    color: #2be6ab;
+    color: #EDF2EF;
     font-weight: bolder;
-    text-shadow: 4px -3px 2px rgb(255, 0, 0);
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
   background-color: #6a23b5;
@@ -76,13 +75,12 @@ main {
 }
 .products {
   h1 {
-    color: #2be6ab;
+    color: #57c4e5;
     font-weight: bolder;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    text-shadow: 4px -3px 2px #6a23b5;
   }
-  background-color: #f3abb6;
-  color: white;
+  background-color: #EDF2EF;
+  color: #212738;
   padding: 25px 40px 0px 40px;
   display: flex;
   flex-direction: column;
@@ -92,6 +90,7 @@ main {
   padding-right: 10px;
 }
 @media only screen and (max-width: 768px) {
+  
   .about-us {
     display: flex;
     justify-content: space-around;
@@ -111,4 +110,9 @@ main {
 .btn {
   background-color: #6a23b5;
   color: white;
+}
+
+app-header{
+  position: fixed;
+  width: 100%;
 }
