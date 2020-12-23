@@ -23,6 +23,11 @@ export class FooterComponent implements OnInit {
 
   subscribe(){
     console.log(this.subscribeForm.value)
+    if(this.idAlredyExist==true){
+      this.showViewSubs();
+      this.subscribeForm.reset();
+    }
+    else{
     this._subscriptionService.subscribe(this.subscribeForm.value)
         .subscribe(
           response => console.log("Success",response),
@@ -30,12 +35,32 @@ export class FooterComponent implements OnInit {
         )
     
     this.subscribeForm.reset();
+    }
   
   
   
   }
 
+  public idAlredyExist:boolean = false;
+
+  idCheck(){
+    this._subscriptionService.idCheckUnique(this.subscribeForm.value.email)
+      .subscribe(res => {
+        console.log(res)
+        if (res != null) {
+          console.log('already exists')
+          this.idAlredyExist = true;
+          // this.subscribeForm.controls['email'].setErrors({'incorrect': true});
+        }
+        else{
+          console.log('not exists')
+          this.idAlredyExist = false;
+        }
+    });
+  }
+
   showViewModal: boolean;
+  showSubsViewModal:boolean;
 
   showView() {
     this.showViewModal = true;
@@ -43,6 +68,11 @@ export class FooterComponent implements OnInit {
 
   closeModal() {
     this.showViewModal = false;
+    this.showSubsViewModal=false;
+  }
+
+  showViewSubs(){
+    this.showSubsViewModal=true;
   }
 
 
