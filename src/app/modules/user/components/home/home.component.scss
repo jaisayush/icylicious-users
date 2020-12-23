@@ -1,12 +1,3 @@
-.body {
-  background-color: #fa8bff;
-  background-image: linear-gradient(
-    45deg,
-    #fa8bff 0%,
-    #2bd2ff 52%,
-    #2bff88 90%
-  );
-}
 main {
   background-image: url("https://raw.githubusercontent.com/jaisayush/IceCream_Images/main/sp.jpg");
   background-position: center;
@@ -38,7 +29,7 @@ main {
 }
 
 .about-us {
-  background-color: #57c4e5;
+  background-color: orange;
   color: white;
   display: flex;
   justify-content: space-around;
@@ -65,12 +56,15 @@ main {
 }
 .contact-us {
   h1 {
-    color: #EDF2EF;
+    color: #212738;
     font-weight: bolder;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
-  background-color: #6a23b5;
-  color: white;
+  a{
+    color: #ff5722;
+  }
+  background-color: white;
+  color: #ff5722;
   display: flex;
   justify-content: space-around;
   height: fit-content;
@@ -79,14 +73,14 @@ main {
     padding: 25px 40px 0px 40px;
   }
   .contact-right {
-    padding-top: 10px;
+    padding-top: 100px;
     padding-left: 10px;
     padding-right: 10px;
   }
 }
 .products {
   h1 {
-    color: #57c4e5;
+    color: orange;
     font-weight: bolder;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }

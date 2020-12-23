@@ -21,9 +21,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ResetComponent } from './components/reset/reset.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
-  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent, UpdatePasswordComponent,ViewProductsComponent, ProfileComponent],
+  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent, UpdatePasswordComponent,ViewProductsComponent, ProfileComponent, CheckoutComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
