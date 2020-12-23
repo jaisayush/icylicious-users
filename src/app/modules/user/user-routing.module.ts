@@ -10,16 +10,17 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 
 import { UserComponent } from './user.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: '', component: UserComponent },
+  { path: '', component: HomeComponent},
   {path:'home',component:HomeComponent},
   {path:'shop',component:ViewProductsComponent},
   {path:'register',component:RegistrationComponent},
   {path:'signup',component:SignupComponent},
   {path:'reset',component:ResetComponent},
   {path:'update',component:UpdatePasswordComponent},
-  {path:'profile',component:ProfileComponent}
+  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({
