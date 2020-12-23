@@ -13,7 +13,7 @@
 
      }
      button{
-         background-color: #FF4081;
+        //  background-color: #FF4081;
          border:none;
          color:white;
          font-size: large;
@@ -24,9 +24,9 @@
          align-items: center;
          vertical-align: middle;
          outline: none;
-         &:hover{
-             background-color:  #fa2b70;
-         }
+        //  &:hover{
+        //      color:  rgb(211, 140, 8);
+        //  }
      }
      span{
          margin:1.5rem;
