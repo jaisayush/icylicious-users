@@ -1,6 +1,6 @@
 <!-- <a routerLink="">Home</a>
 <a routerLink="shop">Shopping</a> -->
-<mat-toolbar color="accent"> 
+<mat-toolbar color="warn">
     <span><img src="../assets/clientlogoFinal.png"/></span>
     <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
       <span id="tabs">
@@ -8,34 +8,35 @@
         <button mat-button routerLink="/shop">Store</button>
       </span>
     </div>
-  
+
     <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <button mat-button data-toggle="logoutModal" data-target="#exampleModal" *ngIf="logged"><mat-icon>shopping_cart</mat-icon></button>
+      <button mat-button data-toggle="logoutModal" routerLink="/cart" data-target="#exampleModal" *ngIf="logged"><mat-icon matBadge="" matBadgePosition="after">shopping_cart</mat-icon></button>
       <button mat-button routerLink="/profile" *ngIf="logged"><mat-icon>person</mat-icon></button>
       <button mat-button (click)="showLogin()" *ngIf="!logged">Login</button>
     </div>
-    
+
     <button  mat-button *ngIf="logged" fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon>shopping_cart</mat-icon></div></button>
     <button id="menubtn" mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
      <mat-icon>menu</mat-icon>
     </button>
-  
+
   </mat-toolbar>
   <mat-menu x-position="before" #menu="matMenu">
     <button mat-menu-item routerLink="">Home</button>
     <button mat-menu-item routerLink="/shop">Store</button>
+    <button mat-menu-item (click)="showLogin()" *ngIf="!logged">Login</button>
     <button mat-menu-item  *ngIf="logged" routerLink="/profile">Profile</button>
   </mat-menu>
-  
+
 
 
 
   <!-- Login  -->
 
-  
 
 
-<div 
+
+<div
     [style.display]="showModal ? 'block' : 'none'"
     class="modal"
     id="imagemodal"
@@ -60,17 +61,17 @@
         <div class="login-container">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-              <input [class.is-invalid]="email.invalid 
-              && email.touched "formControlName="email" type="email" class="form-control" placeholder="Email" (ngModelChange)="onChange()">       
+              <input [class.is-invalid]="email.invalid
+              && email.touched "formControlName="email" type="email" class="form-control" placeholder="Email" (ngModelChange)="onChange()">
               <div *ngIf="email.invalid && email.touched">
                 <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
                 <small *ngIf="email.errors?.email" class="text-danger">Enter valid email id</small>
               </div>
         </div>
-          
+
           <div class="form-group">
-            <input [class.is-invalid]="password.invalid 
-            && password.touched "formControlName="password" type="password" class="form-control" placeholder="Password" (ngModelChange)="onChange()">       
+            <input [class.is-invalid]="password.invalid
+            && password.touched "formControlName="password" type="password" class="form-control" placeholder="Password" (ngModelChange)="onChange()">
             <div *ngIf="password.invalid && password.touched">
                 <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
             </div>
@@ -95,28 +96,7 @@
 </div>
 <div class="modal-footer">
   </div>
-        
+
       </div>
     </div>
 
-  <!-- Logout  -->
-
-  <!-- <div class="logoutModal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
