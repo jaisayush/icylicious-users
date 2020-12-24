@@ -6,7 +6,7 @@
     <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
       <span id="tabs">
         <button mat-button routerLink="">Home</button>
-        <button mat-button routerLink="/shop">Store</button>
+        <button mat-button routerLink="/shop">Shop</button>
       </span>
     </div>
 
@@ -16,7 +16,7 @@
       <button mat-button (click)="showLogin()" *ngIf="!logged">Login</button>
     </div>
 
-    <button  mat-button *ngIf="logged" routerLink="/cart" fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon>shopping_cart</mat-icon></div></button>
+    <button  mat-button *ngIf="logged" routerLink="/cart" matBadge="{{productLength}}" matBadgePosition="after" fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon>shopping_cart</mat-icon></div></button>
     <button id="menubtn" mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
      <mat-icon>menu</mat-icon>
     </button>
@@ -24,7 +24,7 @@
   </mat-toolbar>
   <mat-menu x-position="before" #menu="matMenu">
     <button mat-menu-item routerLink="">Home</button>
-    <button mat-menu-item routerLink="/shop">Store</button>
+    <button mat-menu-item routerLink="/shop">Shop</button>
     <button mat-menu-item (click)="showLogin()" *ngIf="!logged">Login</button>
     <button mat-menu-item  *ngIf="logged" routerLink="/profile">Profile</button>
     <button mat-menu-item  (click)="updatePassword()" *ngIf="logged" routerLink="/profile">Update Password</button>
