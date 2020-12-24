@@ -27,6 +27,8 @@
     <button mat-menu-item routerLink="/shop">Store</button>
     <button mat-menu-item (click)="showLogin()" *ngIf="!logged">Login</button>
     <button mat-menu-item  *ngIf="logged" routerLink="/profile">Profile</button>
+    <button mat-menu-item  (click)="updatePassword()" *ngIf="logged" routerLink="/profile">Update Password</button>
+    <button mat-menu-item (click)="logout()" *ngIf="logged">Logout</button>
   </mat-menu>
 
 
@@ -101,3 +103,22 @@
       </div>
     </div>
 
+
+    <!-- logout -->
+
+    <!-- <div [style.display]="showDeleteModal ? 'block' : 'none'" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Logout</p>
+          <button class="delete" (click)="closeModal()" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <h4>Are you sure want to logout ?</h4>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-danger" (click)="logout()">Confirm</button>
+          <button class="button is-warning" (click)="closeModal()">Cancel</button>
+        </footer>
+      </div>
+    </div> -->
