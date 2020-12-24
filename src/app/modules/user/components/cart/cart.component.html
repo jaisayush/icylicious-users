@@ -1,45 +1,66 @@
 
 <app-header></app-header>
-<div>
+<div id="cart-container">
   <div *ngIf="(this.cart && this.cart.products.length==0 || this.cart==null) ">
     No product is present in cart
   </div>
   <div id="list-container" *ngIf="(this.cart && this.cart.products.length>0) ">
-    <mat-list>
-      <mat-list-item *ngFor="let product of cart.products">
-        <div *ngIf="(product.status)"><img src="{{ product.productImage }}"></div>
-        <div id="content">
-          <h2>{{ product.productName }}</h2>
-          {{ product.productDescription }}
-          <p *ngIf="(product.status)">Price: {{ product.productPrice }}</p>
-          <button (click)="decreaseQty(product)">-</button>
-          <input
-            type="text"
-            name="qty"
-            id="{{ product.productId }}"
-            value="{{ product.productQty }}"
-            disabled
-          />
-          <button (click)="increaseQty(product)">+</button>
-          <div *ngIf="(!product.status)">
-            <p id="outofstock">currently outofstock, please remove this product</p>
+      <mat-list>
+        <mat-list-item *ngFor="let product of cart.products">
+          <div id="list-image" *ngIf="(product.status)"><img src="{{ product.productImage }}"></div>
+          <div id="content">
+            <h3>{{ product.productName }}</h3>
+            <!-- <div id="description">{{ product.productDescription }}</div> -->
+            <p *ngIf="(product.status)">Price: {{ product.productPrice }}</p>
+            <button style="border-radius:0.5rem 0rem 0rem 0.5rem;" (click)="decreaseQty(product)">-</button>
+            <input
+              type="text"
+              name="qty"
+              id="{{ product.productId }}"
+              value="{{ product.productQty }}"
+              disabled
+            />
+            <button style="border-radius:0rem 0.5rem 0.5rem 0rem;" (click)="increaseQty(product)">+</button>
+            <div *ngIf="(!product.status)">
+              <p id="outofstock">Currently out of stock, please remove this product</p>
+            </div>
+            <p></p>
           </div>
-          <p></p>
-        </div>
-        <div id="delete" (click)="deleteProduct(product.productId)">
-          <mat-icon>delete_outline</mat-icon>
-        </div>
-      </mat-list-item>
-    </mat-list>
-    <div>
-      <p>Total Price: {{this.cart.totalPrice}}</p>
-      <button [disabled]="(!placeOrder)" (click)= "showModel()" data-toggle="modal">Place Order</button>
+          <div id="delete" (click)="deleteProduct(product.productId)">
+            <mat-icon>delete_outline</mat-icon>
+          </div>
+        </mat-list-item>
+      </mat-list>
+
+
+
+    <div class="placeOrder-container">
+      <table id="order-calculation" >
+        <tr *ngFor="let product of cart.products">
+          <td *ngIf ="(product.status)" class="detail-cell">
+            {{product.productName}} <b> x {{product.productQty}}</b>
+          </td>
+
+          <td *ngIf ="(product.status)" class="total-price-cell">
+            {{product.productQty * product.productPrice}}
+          </td>
+        </tr>
+        <tr>
+          <td><b>Total Price</b></td>
+          <td>
+             <b>{{this.cart.totalPrice}}</b>
+          </td>
+        </tr>
+      </table>
+
+      <button  [disabled]="(!placeOrder)" (click)= "showModel()" data-toggle="modal">Place Order</button>
     </div>
   </div>
 
 
-  <app-footer></app-footer>
+
 </div>
+<app-footer></app-footer>
 
 <!-- model code -->
 
@@ -55,10 +76,10 @@
       ></button>
     </header>
     <section class="modal-card-body">
-      <h1>Are you sure, you want to place order?</h1>
+      <h4>Are you sure, you want to place order?</h4>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-danger" (click)="confirmOrder()">
+      <button class="button is-success" (click)="confirmOrder()">
         Confirm
       </button>
       <button class="button" (click)="closeModel()">Cancel</button>

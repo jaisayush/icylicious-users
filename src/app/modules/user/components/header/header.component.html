@@ -1,5 +1,6 @@
 <!-- <a routerLink="">Home</a>
 <a routerLink="shop">Shopping</a> -->
+
 <mat-toolbar color="warn">
     <span><img src="../assets/clientlogoFinal.png"/></span>
     <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
@@ -10,12 +11,12 @@
     </div>
 
     <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <button mat-button data-toggle="logoutModal" routerLink="/cart" data-target="#exampleModal" *ngIf="logged"><mat-icon matBadge="" matBadgePosition="after">shopping_cart</mat-icon></button>
+      <button mat-button data-toggle="logoutModal" routerLink="/cart" data-target="#exampleModal" *ngIf="logged"><mat-icon  matBadge="{{productLength}}" matBadgePosition="after">shopping_cart</mat-icon></button>
       <button mat-button routerLink="/profile" *ngIf="logged"><mat-icon>person</mat-icon></button>
       <button mat-button (click)="showLogin()" *ngIf="!logged">Login</button>
     </div>
 
-    <button  mat-button *ngIf="logged" fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon>shopping_cart</mat-icon></div></button>
+    <button  mat-button *ngIf="logged" routerLink="/cart" fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon>shopping_cart</mat-icon></div></button>
     <button id="menubtn" mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
      <mat-icon>menu</mat-icon>
     </button>
@@ -26,6 +27,8 @@
     <button mat-menu-item routerLink="/shop">Store</button>
     <button mat-menu-item (click)="showLogin()" *ngIf="!logged">Login</button>
     <button mat-menu-item  *ngIf="logged" routerLink="/profile">Profile</button>
+    <button mat-menu-item  (click)="updatePassword()" *ngIf="logged" routerLink="/profile">Update Password</button>
+    <button mat-menu-item (click)="logout()" *ngIf="logged">Logout</button>
   </mat-menu>
 
 
@@ -100,3 +103,22 @@
       </div>
     </div>
 
+
+    <!-- logout -->
+
+    <!-- <div [style.display]="showDeleteModal ? 'block' : 'none'" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Logout</p>
+          <button class="delete" (click)="closeModal()" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <h4>Are you sure want to logout ?</h4>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-danger" (click)="logout()">Confirm</button>
+          <button class="button is-warning" (click)="closeModal()">Cancel</button>
+        </footer>
+      </div>
+    </div> -->

@@ -34,7 +34,8 @@
             <p><b>Price:</b>{{product.productPrice  | currency:"INR" }}</p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="accent" id="button{{ product.productId }}" (click)="productDetails(product.productId)">ADD TO CART</button>
+            <button mat-raised-button *ngIf="product.added" color="primary" id="btn{{ product.productId }}" routerLink="/cart">GO TO CART</button>
+            <button mat-raised-button *ngIf="!product.added" color="warn" id="button{{ product.productId }}" (click)="productDetails(product.productId)">ADD TO CART</button>
         </mat-card-actions>
     </mat-card>
     <br/>
@@ -48,7 +49,7 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <h4 class="modal-title" style="color: rgb(114, 36, 84); font-family: bold;">
-        😞Sorry,You need to login to the website</h4>
+        Sorry,You need to login to the website</h4>
     </header>
     <footer class="modal-card-foot">
       <button
@@ -56,7 +57,7 @@
         (click)="closeModal()"
         class="btn btn-danger"
         data-dismiss="modal">
-        Close
+        Login
       </button>
     </footer>
   </div>
