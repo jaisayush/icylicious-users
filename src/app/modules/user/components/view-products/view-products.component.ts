@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ViewProductService } from 'src/app/services/view-product.service';
 // import { ToastrService } from 'ngx-toastr';
 @Component({
@@ -8,7 +9,7 @@ import { ViewProductService } from 'src/app/services/view-product.service';
 })
 export class ViewProductsComponent implements OnInit {
   public emptyProducts=false;
-  constructor(private service:ViewProductService) { }
+  constructor(private service:ViewProductService,private router:Router) { }
   public products:any=[];
   public newProducts:any=[];
   // userId:"navaneetha@gmail.com";
@@ -98,6 +99,7 @@ export class ViewProductsComponent implements OnInit {
 
   }
   closeModal() {
-    this.showViewModal = false;
+    // this.showViewModal = false;
+    this.router.navigate(['home']);
   }
 }
