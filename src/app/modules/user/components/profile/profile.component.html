@@ -1,70 +1,92 @@
 <app-header></app-header>
 <div class="profile-container">
-    <div class="profile">
-        <div>
-            <img src="../../../../../assets/img_avatar.png" alt="Avatar" class="avatar">
-        </div>
-        <div class="details">
-            <span class="icon">
-                <i class="fa fa-envelope fa-lg"></i>
-                <h5>{{email}}</h5>
-            </span>
-        </div>
-        <div class="buttons">
-            <button (click)="updatePassword()" class="btn btn-outline-primary">Update Password</button>
-            <br>
-            <button (click)="showDelete()" class="btn btn-danger">Logout</button>
-        </div>
+  <div class="profile">
+    <div>
+      <img
+        src="../../../../../assets/img_avatar.png"
+        alt="Avatar"
+        class="avatar"
+      />
     </div>
-    <div class="vl"></div>
-    <div class="orders">
-        <ul>
-            <li *ngFor="let order of orderByemail">
-                <mat-card class="card">
-                    <mat-card-header>
-                        <mat-card-title style="word-break:break-all">
-                            {{order._id}}
-                        </mat-card-title>
-                        <mat-card-subtitle><p style="word-break: break-all; color:rgb(37, 36, 36) ;">{{ getDate(order.orderDate)}}</p></mat-card-subtitle>
-                    </mat-card-header>
-                <mat-card-content>
-                   <table class="table table-responsive-md table-hover">
-                <thead>
-                <th scope="col">ProductId</th> 
-                <th scope="col">ProductName</th>
-                <th scope="col">productQty</th>
-                <th scope="col">ProductPrice</th>
-            </thead>
-            <tbody *ngFor="let item of order.itemPurchased">
-                <td>{{ item.productId }}</td>
+    <div class="details">
+      <span class="icon">
+        <i class="fa fa-envelope fa-lg"></i>
+        <h5>{{ email }}</h5>
+      </span>
+    </div>
+    <div class="buttons">
+      <button (click)="updatePassword()" class="btn btn-outline-primary">
+        Update Password
+      </button>
+      <br />
+      <button (click)="showDelete()" class="btn btn-danger">Logout</button>
+    </div>
+  </div>
+  <div class="vl"></div>
+  <div class="orders">
+    <h3>Orders</h3>
+    <ul>
+      <li *ngFor="let order of orderByemail">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title style="word-break: break-all">
+              Order Id : {{ order._id }}
+            </mat-card-title>
+            <mat-card-subtitle>
+              <p style="word-break: break-all; color: rgb(37, 36, 36)">
+                Date : {{ getDate(order.orderDate) }}
+              </p></mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <table class="table table-responsive-md table-hover">
+              <thead>
+                <!-- <th scope="col">ProductId</th>  -->
+                <th scope="col">Name</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Price</th>
+              </thead>
+              <tbody *ngFor="let item of order.itemPurchased">
+                <!-- <td>{{ item.productId }}</td> -->
                 <td>{{ item.productName }}</td>
                 <td>{{ item.productQty }}</td>
-                <td>{{ item.productPrice | currency: "INR" }}</td>
-            </tbody> 
-         </table> 
-                    <p><b>TotalPrice:</b>{{order.totalPrice | currency: "INR" }}</p>
-                </mat-card-content>
-            </mat-card>
-            <br/>
-            <br/>
-            </li>
-        </ul>
-    </div>
+                <td style="word-break: break-all">
+                  {{ item.productPrice | currency: "INR" }}
+                </td>
+              </tbody>
+            </table>
+            <p><b>TotalPrice : </b>{{ order.totalPrice | currency: "INR" }}</p>
+          </mat-card-content>
+        </mat-card>
+        <br />
+        <br />
+      </li>
+    </ul>
+  </div>
 </div>
 
-<div [style.display]="showViewModel ? 'flex' : 'none'" class="modal" style="color: rgb(247, 57, 89);">
+<div
+  [style.display]="showViewModel ? 'flex' : 'none'"
+  class="modal"
+  style="color: rgb(247, 57, 89)"
+>
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <h4 class="modal-title" style="color: rgb(114, 36, 84); font-family: bold;">
-        Sorry,No Orders are Found</h4>
+      <h4
+        class="modal-title"
+        style="color: rgb(114, 36, 84); font-family: bold"
+      >
+        Sorry,No Orders are Found
+      </h4>
     </header>
     <footer class="modal-card-foot">
       <button
         type="button"
         (click)="closeOrderModal()"
         class="btn btn-success"
-        data-dismiss="modal">
+        data-dismiss="modal"
+      >
         Buy
       </button>
     </footer>
@@ -72,22 +94,20 @@
 </div>
 
 <div [style.display]="showDeleteModal ? 'block' : 'none'" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Logout</p>
-        <button class="delete" (click)="closeModal()" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <h4>Are you sure want to logout ?</h4>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button is-danger" (click)="logout()">Confirm</button>
-        <button class="button is-warning" (click)="closeModal()">Cancel</button>
-      </footer>
-    </div>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Logout</p>
+      <button class="delete" (click)="closeModal()" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <h4>Are you sure want to logout ?</h4>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" (click)="logout()">Confirm</button>
+      <button class="button is-warning" (click)="closeModal()">Cancel</button>
+    </footer>
   </div>
-
-
+</div>
 
 <!-- <app-footer></app-footer> -->
