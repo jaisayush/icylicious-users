@@ -37,7 +37,7 @@ import {MatListModule} from '@angular/material/list';
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
-    // MatBadgeModule,
+    MatBadgeModule,
     MatListModule
   ]
 })
