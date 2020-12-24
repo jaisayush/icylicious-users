@@ -9,7 +9,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private route:Router,private service:ProfileService) { }
+  constructor(private route:Router,private service:ProfileService,private router:Router) { }
   public orders:any=[];
   public orderByemail:any=[];
   public items:any=[];
@@ -45,7 +45,8 @@ export class ProfileComponent implements OnInit {
     return newDate
   }
   closeOrderModal() {
-    this.showViewModel = false;
+    // this.showViewModel = false;
+    this.router.navigate(['shop']);
   }
   
 
