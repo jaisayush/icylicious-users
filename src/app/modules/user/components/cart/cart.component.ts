@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {CartService} from 'src/app/services/cart.service'
 import { SharedService } from 'src/app/services/shared.service';
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -14,8 +15,22 @@ export class CartComponent  {
   constructor(private service: CartService, private shared:SharedService, private route:Router) {
     
   }
+  encryptSecretKey = "esrgr54gyse65tgzs56e4tg56s4rg";
+  decryptData(data) {
+
+    try {
+      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if (bytes.toString()) {
+        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   ngOnInit(): void {
+    console.log(this.decryptData(localStorage.getItem('email')))
     this.getCart();
   }
 
@@ -45,7 +60,7 @@ export class CartComponent  {
       if(response){
         console.log("placed");
         console.log(response);
-        this.deleteUserCartSubscribe(localStorage.getItem('email'));
+        this.deleteUserCartSubscribe(this.decryptData(localStorage.getItem('email')));
       }
     })
   }
@@ -85,7 +100,7 @@ export class CartComponent  {
   }
 
   getCart() {
-    this.service.getCartDetail(localStorage.getItem('email')).subscribe((response) => {
+    this.service.getCartDetail(this.decryptData(localStorage.getItem('email'))).subscribe((response) => {
       console.log(response);
       if (response) {
         this.cart = response;
@@ -118,7 +133,7 @@ export class CartComponent  {
 
   decreaseQty(product) {
     let newCart = {
-      userId: localStorage.getItem('email'),
+      userId: this.decryptData(localStorage.getItem('email')),
       productId: product.productId,
       productQty: product.productQty,
     };
@@ -144,7 +159,7 @@ export class CartComponent  {
   }
   increaseQty(product) {
     let newCart = {
-      userId: localStorage.getItem('email'),
+      userId: this.decryptData(localStorage.getItem('email')),
       productId: product.productId,
       productQty: product.productQty,
     };
@@ -167,7 +182,7 @@ export class CartComponent  {
   deleteProduct(productId){
     let productDetail={
       "productId":productId,
-      "userId":localStorage.getItem('email')
+      "userId":this.decryptData(localStorage.getItem('email'))
     }
     this.deleteCartProduct(productDetail)
   }
@@ -185,7 +200,7 @@ export class CartComponent  {
   modelDisplay:boolean=false;
   confirmOrder(){
     let orderDetail={
-      userId:localStorage.getItem('email'),
+      userId:this.decryptData(localStorage.getItem('email')),
       itemPurchased:this.cart.products,
       totalPrice:this.cart.totalPrice
 
