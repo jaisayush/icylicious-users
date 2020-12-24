@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,8 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  public productLength:any = 8;
 
   get email(){
     return this.loginForm.get('email');
@@ -18,13 +21,15 @@ export class HeaderComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  constructor(private fb:FormBuilder,private loginService:LoginService, private route:Router) { }
+  constructor(private fb:FormBuilder,private loginService:LoginService, private route:Router, private shared:SharedService) { }
 
   loginForm = this.fb.group({
     email: ['',[Validators.required,Validators.email]],
     password: ['',[Validators.required,Validators.minLength(8)]]
   })
   ngOnInit(): void {
+    // this.productLength = this.shared.getMessage();
+    console.log(this.productLength);
   }
 
   public failed:boolean = false;
