@@ -18,10 +18,58 @@
     </div>
     <div class="vl"></div>
     <div class="orders">
-        <h3>orders</h3>
+        <ul>
+            <li *ngFor="let order of orderByemail">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <mat-card-title style="word-break:break-all">
+                            {{order._id}}
+                        </mat-card-title>
+                        <mat-card-subtitle><p style="word-break: break-all; color:rgb(37, 36, 36) ;">{{ getDate(order.orderDate)}}</p></mat-card-subtitle>
+                    </mat-card-header>
+                <mat-card-content>
+                   <table class="table table-responsive-md table-hover">
+                <thead>
+                <th scope="col">ProductId</th> 
+                <th scope="col">ProductName</th>
+                <th scope="col">productQty</th>
+                <th scope="col">ProductPrice</th>
+            </thead>
+            <tbody *ngFor="let item of order.itemPurchased">
+                <td>{{ item.productId }}</td>
+                <td>{{ item.productName }}</td>
+                <td>{{ item.productQty }}</td>
+                <td>{{ item.productPrice | currency: "INR" }}</td>
+            </tbody> 
+         </table> 
+                    <p><b>TotalPrice:</b>{{order.totalPrice | currency: "INR" }}</p>
+                </mat-card-content>
+            </mat-card>
+            <br/>
+            <br/>
+            </li>
+        </ul>
     </div>
 </div>
 
+<div [style.display]="showViewModel ? 'flex' : 'none'" class="modal" style="color: rgb(247, 57, 89);">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <h4 class="modal-title" style="color: rgb(114, 36, 84); font-family: bold;">
+        Sorry,No Orders are Found</h4>
+    </header>
+    <footer class="modal-card-foot">
+      <button
+        type="button"
+        (click)="closeOrderModal()"
+        class="btn btn-success"
+        data-dismiss="modal">
+        Buy
+      </button>
+    </footer>
+  </div>
+</div>
 
 <div [style.display]="showDeleteModal ? 'block' : 'none'" class="modal">
     <div class="modal-background"></div>
@@ -41,4 +89,5 @@
   </div>
 
 
-<app-footer></app-footer>
+
+<!-- <app-footer></app-footer> -->
