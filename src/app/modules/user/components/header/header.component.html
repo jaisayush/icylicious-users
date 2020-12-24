@@ -16,7 +16,7 @@
       <button mat-button (click)="showLogin()" *ngIf="!logged">Login</button>
     </div>
 
-    <button  mat-button *ngIf="logged" routerLink="/cart" matBadge="{{productLength}}" matBadgePosition="after" fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon>shopping_cart</mat-icon></div></button>
+    <button  mat-button *ngIf="logged" routerLink="/cart"  fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon matBadge="{{productLength}}" matBadgePosition="after">shopping_cart</mat-icon></div></button>
     <button id="menubtn" mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
      <mat-icon>menu</mat-icon>
     </button>
