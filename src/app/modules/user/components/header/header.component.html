@@ -11,7 +11,7 @@
     </div>
 
     <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <button mat-button data-toggle="logoutModal" routerLink="/cart" data-target="#exampleModal" *ngIf="logged"><mat-icon matBadge="4" matBadgePosition="after">shopping_cart</mat-icon></button>
+      <button mat-button data-toggle="logoutModal" routerLink="/cart" data-target="#exampleModal" *ngIf="logged"><mat-icon  matBadge="{{productLength}}" matBadgePosition="after">shopping_cart</mat-icon></button>
       <button mat-button routerLink="/profile" *ngIf="logged"><mat-icon>person</mat-icon></button>
       <button mat-button (click)="showLogin()" *ngIf="!logged">Login</button>
     </div>

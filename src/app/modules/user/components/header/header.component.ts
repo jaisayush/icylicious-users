@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
     password: ['',[Validators.required,Validators.minLength(8)]]
   })
   ngOnInit(): void {
-    // this.productLength = this.shared.getMessage();
+    this.productLength = this.shared.getMessage();
     console.log(this.productLength);
   }
 
