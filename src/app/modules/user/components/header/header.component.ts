@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { LoginService } from 'src/app/services/login.service';
 import { SharedService } from 'src/app/services/shared.service';
 
@@ -21,16 +22,33 @@ export class HeaderComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  constructor(private fb:FormBuilder,private loginService:LoginService, private route:Router, private shared:SharedService) { }
+  constructor(private fb:FormBuilder,private loginService:LoginService, private route:Router, private shared:SharedService, private service: CartService) { }
 
   loginForm = this.fb.group({
     email: ['',[Validators.required,Validators.email]],
     password: ['',[Validators.required,Validators.minLength(8)]]
   })
+
+  cart: any;
   ngOnInit(): void {
-    // this.productLength = this.shared.getMessage();
-    console.log(this.productLength);
+      this.service.getCartDetail(localStorage.getItem('email')).subscribe((response) => {
+        if (response) {
+          this.cart = response;
+          if (this.cart == 'Cart is empty') {
+            this.cart=null;
+          } else {
+            if(this.cart.products.length > 0){
+              this.productLength = this.cart.products.length;
+            }
+            else{
+              this.productLength = ''
+            }
+          }
+        }
+      });
   }
+
+
 
   public failed:boolean = false;
   public wrongPass:boolean = false;
@@ -105,6 +123,8 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('id');
     localStorage.removeItem('email');
   }
+
+
   
 
 }

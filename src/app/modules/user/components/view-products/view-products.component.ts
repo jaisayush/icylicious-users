@@ -20,29 +20,30 @@ export class ViewProductsComponent implements OnInit {
     console.log("option value"+type);
     this.newProducts=[];
     var today = new Date().toISOString().split('T')[0];
+    console.log("today date:"+today);
     this.service.getProducts().subscribe((response)=>{
       this.products=response;
       if(this.products.length < 1){
         this.emptyProducts=true
       }
+      console.log("items are :"+this.products);
       for(var i=0;i<this.products.length;i++){
         this.products[i].productStartDate = this.setDate(this.products[i].productStartDate);
         this.products[i].productEndDate = this.setDate(this.products[i].productEndDate);
-        if(this.products[i].productEndDate > today && this.products[i].productType==type){
-          //  console.log(this.products);
-          console.log("hello");
-          this.newProducts.push(this.products[i])
-          console.log(this.newProducts[i]);
+        if(!(this.products[i].productStartDate > today) && this.products[i].productEndDate > today){
+          if(this.products[i].productType==type){
+            this.newProducts.push(this.products[i])
+          }
+          if(type=='all'){
+            this.newProducts.push(this.products[i])
+          }
         }
-        if(this.products[i].productEndDate > today && type=='all'){
-          //  console.log(this.products);
-          console.log("hello");
-          this.newProducts.push(this.products[i])
-          console.log(this.newProducts[i]);
-        }
+        // if(this.products[i].productEndDate > today && type=='all'){
+        //   this.newProducts.push(this.products[i])
+        //   console.log(this.newProducts[i]);
+        // }
         
       }
-      // console.log(this.newProducts);
     })
 
   }
@@ -54,17 +55,26 @@ export class ViewProductsComponent implements OnInit {
       if(this.products.length < 1){
         this.emptyProducts=true
       }
+      // console.log("items are on init"+this.products);
       for(var i=0;i<this.products.length;i++){
         this.products[i].productStartDate = this.setDate(this.products[i].productStartDate);
         this.products[i].productEndDate = this.setDate(this.products[i].productEndDate);
-        if(this.products[i].productEndDate > today){
-          //  console.log(this.products);
-          console.log("hello");
+        // if(this.products[i].productEndDate > today || this.products[i].productStartDate < today)
+        if(!(this.products[i].productStartDate > today) && this.products[i].productEndDate > today)
+        {
+          console.log("prodyucts ");
+           console.log(this.products[i]);
+          
           this.newProducts.push(this.products[i])
-          console.log(this.newProducts[i]);
+
+          for(let i=0;i<this.newProducts.length;i++){
+            // var obj = {added: false};
+            this.newProducts[i]['added']=false;
+          }
+
         }
       }
-      // console.log(this.newProducts);
+      console.log("products are "+this.newProducts);
     })
   }
   setDate(string) {
@@ -90,8 +100,14 @@ export class ViewProductsComponent implements OnInit {
         this.service.createCart(product).subscribe(()=>{
           console.log("success");
           let btn = document.getElementById("button"+productId) as HTMLElement
-          btn.innerHTML="Product Added";
-          btn.style.backgroundColor = "green";
+          // btn.innerHTML="Product Added";
+          // btn.style.backgroundColor = "green";
+          for(let i=0;i<this.newProducts.length;i++){
+            if(this.newProducts[i].productId === productId){
+              this.newProducts[i]['added']=true;
+            } 
+          }
+          this.router.navigate(['/shop'])
         })
       }
       }
