@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewProductService } from 'src/app/services/view-product.service';
+import * as CryptoJS from 'crypto-js';
 // import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-view-products',
@@ -14,6 +15,20 @@ export class ViewProductsComponent implements OnInit {
   public newProducts:any=[];
   // userId:"navaneetha@gmail.com";
   showViewModal:boolean;
+
+  encryptSecretKey = "esrgr54gyse65tgzs56e4tg56s4rg";
+  decryptData(data) {
+
+    try {
+      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if (bytes.toString()) {
+        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
   
   ontype(){
     var type = (<HTMLInputElement>document.getElementById("type")).value;
@@ -87,7 +102,7 @@ export class ViewProductsComponent implements OnInit {
     {
       if(product.productId==productId)
       {
-        var email= localStorage.getItem("email");
+        var email= this.decryptData(localStorage.getItem("email"));
         console.log("email:"+email);
         if(email==null){
             // alert("u need to login first");
