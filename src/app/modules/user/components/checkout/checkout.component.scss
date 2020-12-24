@@ -1,5 +1,44 @@
+.main-image{
+    margin-left: 35%;
+    width: 30%;
+    height: 30%;
+}
+h4{
+  margin-left: 40%;
+}
+
+.buttons{
+  .orders{
+    margin-left: 41%;
+  }
+  .shop{
+    margin-left: 1%;
+  }
+}
+
 app-footer{
     width: 100%;
     position: absolute;
     bottom: 0%;
   }
+
+
+@media all and(max-width:600px){
+  .main-image{
+    margin-left: 12%;
+    width: 70%;
+    height: 70%;
+}
+h4{
+  margin-left: 10%;
+}
+.buttons{
+  .orders{
+    margin-left: 12%;
+  }
+  .shop{
+    margin-left: 1%;
+  }
+}
+
+}

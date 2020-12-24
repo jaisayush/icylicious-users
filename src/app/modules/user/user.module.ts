@@ -22,9 +22,11 @@ import { ResetComponent } from './components/reset/reset.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-
+import {MatBadgeModule} from '@angular/material/badge';
+import { CartComponent } from './components/cart/cart.component';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
-  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent, UpdatePasswordComponent,ViewProductsComponent, ProfileComponent, CheckoutComponent],
+  declarations: [UserComponent, FooterComponent, HeaderComponent, HomeComponent, ShoppingComponent, RegistrationComponent, SignupComponent, ResetComponent, UpdatePasswordComponent,ViewProductsComponent, ProfileComponent, CheckoutComponent, CartComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -34,7 +36,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     FlexLayoutModule,
     MatIconModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    // MatBadgeModule,
+    MatListModule
   ]
 })
 export class UserModule { }

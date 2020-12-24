@@ -8,3 +8,11 @@ app-footer{
     position: absolute;
     bottom: 0%;
   }
+
+
+@media all and(max-width:600px){
+    .container-fluid{
+        padding-top: 2%;
+        width: 80%;
+    }
+}
