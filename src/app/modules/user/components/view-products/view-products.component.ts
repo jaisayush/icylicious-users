@@ -61,10 +61,16 @@ export class ViewProductsComponent implements OnInit {
           //  console.log(this.products);
           console.log("hello");
           this.newProducts.push(this.products[i])
-          console.log(this.newProducts[i]);
+
+          for(let i=0;i<this.newProducts.length;i++){
+            // var obj = {added: false};
+            this.newProducts[i]['added']=false;
+          }
+
+          // console.log(this.newProducts[i]);
         }
       }
-      // console.log(this.newProducts);
+      console.log(this.newProducts);
     })
   }
   setDate(string) {
@@ -90,8 +96,14 @@ export class ViewProductsComponent implements OnInit {
         this.service.createCart(product).subscribe(()=>{
           console.log("success");
           let btn = document.getElementById("button"+productId) as HTMLElement
-          btn.innerHTML="Product Added";
-          btn.style.backgroundColor = "green";
+          // btn.innerHTML="Product Added";
+          // btn.style.backgroundColor = "green";
+          for(let i=0;i<this.newProducts.length;i++){
+            if(this.newProducts[i].productId === productId){
+              this.newProducts[i]['added']=true;
+            } 
+          }
+          this.router.navigate(['/shop'])
         })
       }
       }
