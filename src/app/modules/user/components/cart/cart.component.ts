@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {CartService} from 'src/app/services/cart.service'
+import { SharedService } from 'src/app/services/shared.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -9,7 +11,11 @@ export class CartComponent  {
 
   cart: any;
   placeOrder:boolean=true;
-  constructor(private service: CartService) {
+  constructor(private service: CartService, private shared:SharedService, private route:Router) {
+    
+  }
+
+  ngOnInit(): void {
     this.getCart();
   }
 
@@ -86,6 +92,7 @@ export class CartComponent  {
         if (this.cart == 'Cart is empty') {
           this.cart=null;
         } else {
+          this.shared.setMessage(this.cart.products.length)
           this.cart.totalPrice = 0;
           for (let i = 0; i < this.cart.products.length; i++) {
             this.getImageLink(this.cart.products[i].productId, i);
@@ -175,7 +182,6 @@ export class CartComponent  {
     }
     this.cart.totalPrice=totalPrice;
   }
-
   modelDisplay:boolean=false;
   confirmOrder(){
     let orderDetail={
@@ -187,6 +193,7 @@ export class CartComponent  {
     this.placeOrderSubscribe(orderDetail);
     console.log(orderDetail);
     this.modelDisplay=false;
+    this.route.navigate(['/checkout'])
   }
 
   showModel(){
