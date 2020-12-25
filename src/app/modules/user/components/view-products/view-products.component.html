@@ -44,18 +44,18 @@
 </ul>
 
 
-<div [style.display]="showViewModal ? 'flex' : 'none'" class="modal" style="color: rgb(247, 57, 89);">
+<div [style.display]="showViewModal ? 'flex' : 'none'" class="modal" >
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <h4 class="modal-title" style="color: rgb(114, 36, 84); font-family: bold;">
-        Sorry,You need to login to the website</h4>
+      <h4 class="modal-title">
+        Sorry, You need to login to the website</h4>
     </header>
     <footer class="modal-card-foot">
       <button
         type="button"
         (click)="closeModal()"
-        class="btn btn-danger"
+        class="btn btn-success"
         data-dismiss="modal">
         Login
       </button>
