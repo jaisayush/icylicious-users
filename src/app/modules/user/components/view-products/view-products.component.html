@@ -22,13 +22,13 @@
     <li *ngFor="let product of newProducts">
         <mat-card class="card">
             <mat-card-header>
-                <mat-card-title style="word-break:break-all">
+                <mat-card-title style="word-break:break-all; color:rgb(244 67 54)">
                     {{product.productName}}
                 </mat-card-title>
                 <mat-card-subtitle>{{product.productType}}</mat-card-subtitle>
             </mat-card-header>
             <img mat-card-image src="{{product.productImage}}"
-            alt="{{product.productName}}"/> 
+            alt="{{product.productName}}"/>
         <mat-card-content>
             <p style="word-break: break-all; color:rgb(37, 36, 36) ;">{{product.productDescription}}</p>
             <p><b>Price:</b>{{product.productPrice  | currency:"INR" }}</p>

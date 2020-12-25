@@ -1,17 +1,23 @@
 
 <app-header></app-header>
 <div id="cart-container">
-  <div *ngIf="(this.cart && this.cart.products.length==0 || this.cart==null) ">
-    No product is present in cart
+  <div id="emptycart" *ngIf="(this.cart && this.cart.products.length==0 || this.cart==null) ">
+    <div  style="font-size: 1.5rem;"><b>Sorry, Your Cart Is Empty</b></div>
+    <div><img src="../assets/emptycart (1).jpg"></div>
+    <div>
+      <button routerLink="/shop">
+      Buy Now
+    </button></div>
+
   </div>
   <div id="list-container" *ngIf="(this.cart && this.cart.products.length>0) ">
       <mat-list>
         <mat-list-item *ngFor="let product of cart.products">
           <div id="list-image" *ngIf="(product.status)"><img src="{{ product.productImage }}"></div>
           <div id="content">
-            <h3>{{ product.productName }}</h3>
+            <h3 style="word-break: break-all">{{ product.productName }}</h3>
             <!-- <div id="description">{{ product.productDescription }}</div> -->
-            <p *ngIf="(product.status)">Price: {{ product.productPrice }}</p>
+            <p style="word-break: break-all" *ngIf="(product.status)">Price: {{ product.productPrice }}</p>
             <button style="border-radius:0.5rem 0rem 0rem 0.5rem;" (click)="decreaseQty(product)">-</button>
             <input
               type="text"
@@ -35,32 +41,36 @@
 
 
     <div class="placeOrder-container">
-      <table id="order-calculation" >
-        <tr *ngFor="let product of cart.products">
-          <td *ngIf ="(product.status)" class="detail-cell">
-            {{product.productName}} <b> x {{product.productQty}}</b>
-          </td>
+      <div>
+        <table id="order-calculation" >
+          <tr *ngFor="let product of cart.products">
+            <td *ngIf ="(product.status)" class="detail-cell">
+              {{product.productName}} <b> x {{product.productQty}}</b>
+            </td>
 
-          <td *ngIf ="(product.status)" class="total-price-cell">
-            {{product.productQty * product.productPrice}}
-          </td>
-        </tr>
-        <tr>
-          <td><b>Total Price</b></td>
-          <td>
-             <b>{{this.cart.totalPrice}}</b>
-          </td>
-        </tr>
-      </table>
+            <td *ngIf ="(product.status)" class="total-price-cell">
+              {{product.productQty * product.productPrice}}
+            </td>
+          </tr>
+          <tr>
+            <td><b>Total Price</b></td>
+            <td>
+               <b>{{this.cart.totalPrice}}</b>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-      <button  [disabled]="(!placeOrder)" (click)= "showModel()" data-toggle="modal">Place Order</button>
+      <div>
+        <button  [disabled]="(!placeOrder)" (click)= "showModel()" data-toggle="modal">Place Order</button>
+      </div>
     </div>
   </div>
 
 
-
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->
 
 <!-- model code -->
 
