@@ -1,4 +1,5 @@
 .form-back{
+    // background-color: white;
     background-color: white;
     border-radius: 3%;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -7,6 +8,13 @@
     overflow-y: scroll;
     margin: 2%;
     padding: 2% 0%;
+}
+
+.form-whole{
+    background-image: url('https://cdn.dribbble.com/users/648751/screenshots/8575798/media/e1c3cf5b7f54e3182b778f7495a32184.gif');
+    background-repeat: no-repeat;
+    background-position: 70%;
+    background-size: 70%;
 }
 
 .form-back::-webkit-scrollbar-track
@@ -34,5 +42,9 @@
 @media all and(max-width:600px){
     .form-back{
         width: 95%;
+    }
+
+    .form-whole{
+        background-image: url('../../../../../assets/whitePage.JPG');
     }
 }
