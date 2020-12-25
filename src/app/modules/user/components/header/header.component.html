@@ -26,7 +26,7 @@
     <button mat-menu-item routerLink="">Home</button>
     <button mat-menu-item routerLink="/shop">Shop</button>
     <button mat-menu-item (click)="showLogin()" *ngIf="!logged">Login</button>
-    <button mat-menu-item  *ngIf="logged" routerLink="/profile">Profile</button>
+    <button mat-menu-item  *ngIf="logged" routerLink="/profile">Orders</button>
     <button mat-menu-item  (click)="updatePassword()" *ngIf="logged" routerLink="/profile">Update Password</button>
     <button mat-menu-item (click)="logout()" *ngIf="logged">Logout</button>
   </mat-menu>
