@@ -3,7 +3,7 @@ import {FormBuilder,Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { ConfirmedValidator } from '../../../../services/confirmed.validator';
-
+import { PasswordStrengthValidator} from '../../../../services/password-strength.validator';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
   registrationForm = this.fb.group({
     name: ['',[Validators.required]],
     emailID: [{value: this.route.snapshot.paramMap.get('email'), disabled: true}],
-    password: ['',[Validators.required,Validators.minLength(8)]],
+    password: ['',[Validators.required,PasswordStrengthValidator]],
     confirmPassword: ['',[Validators.required,Validators.minLength(8)]],
     question: ['',[Validators.required]],
     answer: ['',[Validators.required,Validators.minLength(3)]],
