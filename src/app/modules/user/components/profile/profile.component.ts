@@ -59,11 +59,13 @@ export class ProfileComponent implements OnInit {
     let newDate = date.substring(0,10)
     return newDate
   }
-  closeOrderModal() {
-    // this.showViewModel = false;
+  // closeOrderModal() {
+  //   // this.showViewModel = false;
+  //   this.router.navigate(['shop']);
+  // }
+  shopNow(){
     this.router.navigate(['shop']);
   }
-  
 
   showDelete(){
     this.showDeleteModal = true;
