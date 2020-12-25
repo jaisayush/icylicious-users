@@ -93,7 +93,13 @@ main {
   padding-left: 10px;
   padding-right: 10px;
 }
-@media only screen and (max-width: 768px) {
+@media all and (max-width: 768px) {
+  main{
+    .content{
+      width: 50%;
+      margin-top: 45%;
+    }
+  }
   .about-us {
     width: 100%;
     display: flex;

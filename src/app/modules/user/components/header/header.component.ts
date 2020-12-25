@@ -13,7 +13,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class HeaderComponent implements OnInit {
 
-  public productLength:any = 8;
+  public productLength:any
 
   get email(){
     return this.loginForm.get('email');
@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
           if (this.cart == 'Cart is empty') {
             this.cart=null;
           } else {
+            console.log(this.cart.products)
             if(this.cart.products.length > 0){
               this.productLength = this.cart.products.length;
             }
@@ -67,15 +68,11 @@ export class HeaderComponent implements OnInit {
       .subscribe(
         response =>{
           console.log(response)
-          if(response.msg === "invalid"){
-            this.loginForm.reset();
-            this.failed = true;
-          }
-          else if(response.msg === "failed"){
+          if(response.msg === "failed"){
             this.loginForm.patchValue({email: this.loginForm.get('email').value,password:''});
             this.wrongPass = true;
           }
-          else{
+          else if(response.msg === "success"){
             this.logged = true;
             localStorage.setItem('userLogged', "true");
             localStorage.setItem('id', response.id.toString());
@@ -84,6 +81,10 @@ export class HeaderComponent implements OnInit {
             this.loginForm.reset();
             this.route.navigate(['/']);
             this.hide();
+          }
+          else{
+            this.loginForm.reset();
+            this.failed = true;
           }
         },
         error =>{
