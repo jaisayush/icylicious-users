@@ -13,7 +13,7 @@ export class CartComponent  {
   cart: any;
   placeOrder:boolean=true;
   constructor(private service: CartService, private shared:SharedService, private route:Router) {
-    
+
   }
   encryptSecretKey = "esrgr54gyse65tgzs56e4tg56s4rg";
   decryptData(data) {
@@ -36,9 +36,10 @@ export class CartComponent  {
 
   checkProductExpiry(product){
     let date = new Date();
-    let d = date.toISOString();
-    if(product.productEndDate<d || product.productStartDate>d){
-      return false
+    let d = date.toISOString().split('T')[0];
+
+    if(product.productEndDate.split('T')[0]<d || product.productStartDate.split('T')[0]>d){
+      return false;
     }
     else{
       return true;
