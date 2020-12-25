@@ -24,7 +24,7 @@
   </div>
   <div class="vl"></div>
   <div class="orders">
-    <h3>My Orders</h3>
+    <h3 *ngIf="orderByemail.length != 0">My Orders</h3>
     <ul>
       <li *ngFor="let order of orderByemail">
         <mat-card class="card">
@@ -43,12 +43,12 @@
               <thead>
                 <!-- <th scope="col">ProductId</th>  -->
                 <th scope="col">Name</th>
-                <th scope="col">Qty</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
               </thead>
               <tbody *ngFor="let item of order.itemPurchased">
                 <!-- <td>{{ item.productId }}</td> -->
-                <td>{{ item.productName }}</td>
+                <td style="word-break: break-all">{{ item.productName }}</td>
                 <td>{{ item.productQty }}</td>
                 <td style="word-break: break-all">
                   {{ item.productPrice | currency: "INR" }}
@@ -62,21 +62,33 @@
         <br />
       </li>
     </ul>
+    <div *ngIf="orderByemail.length == 0">
+      <div class="image">
+        <img src="../../../../../assets/empty.png" alt="Avatar" />
+        <button mat-raised-button color="warn" (click)="shopNow()">
+          SHOP NOW
+        </button>
+      </div>
+    </div>
   </div>
 </div>
+<ng-container *ngIf="orderByemail.length == 0; else elseTemplate">
+  <app-footer style="position: absolute; bottom: 0; width: 100%"> </app-footer>
+</ng-container>
+<ng-template #elseTemplate>
+  <app-footer style="position: relative; width: 100%"> </app-footer>
+</ng-template>
 
-<div
+<!-- <div
   [style.display]="showViewModel ? 'flex' : 'none'"
   class="modal"
-  style="color: rgb(247, 57, 89)"
->
+  style="color: rgb(247, 57, 89)">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
       <h4
         class="modal-title"
-        style="color: rgb(114, 36, 84); font-family: bold"
-      >
+        style="color: rgb(114, 36, 84); font-family: bold">
         Sorry,No Orders are Found
       </h4>
     </header>
@@ -85,13 +97,12 @@
         type="button"
         (click)="closeOrderModal()"
         class="btn btn-success"
-        data-dismiss="modal"
-      >
+        data-dismiss="modal">
         Buy
       </button>
     </footer>
   </div>
-</div>
+</div> -->
 
 <div [style.display]="showDeleteModal ? 'block' : 'none'" class="modal">
   <div class="modal-background"></div>
