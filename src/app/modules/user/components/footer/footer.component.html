@@ -42,20 +42,20 @@
     </div>
 </div>
 
-<div [style.display]="showViewModal ? 'flex' : 'none'" class="modal" style="color: rgb(247, 57, 89);">
+<div [style.display]="showViewModal ? 'flex' : 'none'" class="modal" >
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <h3 class="modal-title" style="color: rgb(233, 37, 158); font-family: cursive;">😀Thanks for Subscribing our Website😀</h3>
+      <h3 class="modal-title">Thanks for Subscribing our Website</h3>
     </header>
     <section class="modal-card-body">
-      <p><b>We will keep you updated with our discounts & offers via your shared email id</b></p>
+      <p><b>We will keep you updated with our discounts and offers.</b></p>
     </section>
     <footer class="modal-card-foot">
       <button
         type="button"
         (click)="closeModal()"
-        class="btn btn-warning"
+        class="btn btn-success"
         data-dismiss="modal"
       >
         Close
@@ -64,11 +64,11 @@
   </div>
 </div>
 
-<div [style.display]="showSubsViewModal ? 'flex' : 'none'" class="modal" style="color: rgb(247, 57, 89);">
+<div [style.display]="showSubsViewModal ? 'flex' : 'none'" class="modal">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <h3 class="modal-title" style="color: rgb(233, 37, 158); font-family: fantasy;">😎Congrats, you have already subscribed</h3>
+      <h3 class="modal-title">Congrats!! you have already subscribed</h3>
     </header>
     <section class="modal-card-body">
       <p><b>!!!!!Thank You!!!!!!</b></p>
@@ -77,7 +77,7 @@
       <button
         type="button"
         (click)="closeModal()"
-        class="btn btn-warning"
+        class="btn btn-success"
         data-dismiss="modal"
       >
         Close

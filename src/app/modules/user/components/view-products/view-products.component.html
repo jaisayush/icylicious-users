@@ -22,13 +22,13 @@
     <li *ngFor="let product of newProducts">
         <mat-card class="card">
             <mat-card-header>
-                <mat-card-title style="word-break:break-all">
+                <mat-card-title style="word-break:break-all; color:rgb(244 67 54)">
                     {{product.productName}}
                 </mat-card-title>
                 <mat-card-subtitle>{{product.productType}}</mat-card-subtitle>
             </mat-card-header>
             <img mat-card-image src="{{product.productImage}}"
-            alt="{{product.productName}}"/> 
+            alt="{{product.productName}}"/>
         <mat-card-content>
             <p style="word-break: break-all; color:rgb(37, 36, 36) ;">{{product.productDescription}}</p>
             <p><b>Price:</b>{{product.productPrice  | currency:"INR" }}</p>
@@ -44,18 +44,18 @@
 </ul>
 
 
-<div [style.display]="showViewModal ? 'flex' : 'none'" class="modal" style="color: rgb(247, 57, 89);">
+<div [style.display]="showViewModal ? 'flex' : 'none'" class="modal" >
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <h4 class="modal-title" style="color: rgb(114, 36, 84); font-family: bold;">
-        Sorry,You need to login to the website</h4>
+      <h4 class="modal-title">
+        Sorry, You need to login to the website</h4>
     </header>
     <footer class="modal-card-foot">
       <button
         type="button"
         (click)="closeModal()"
-        class="btn btn-danger"
+        class="btn btn-success"
         data-dismiss="modal">
         Login
       </button>
