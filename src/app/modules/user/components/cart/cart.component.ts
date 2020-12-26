@@ -37,7 +37,6 @@ export class CartComponent  {
   checkProductExpiry(product){
     let date = new Date();
     let d = date.toISOString().split('T')[0];
-
     if(product.productEndDate.split('T')[0]<d || product.productStartDate.split('T')[0]>d){
       return false;
     }
