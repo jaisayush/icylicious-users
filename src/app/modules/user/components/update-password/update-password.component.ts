@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {FormBuilder,Validators} from '@angular/forms';
 import { ConfirmedValidator } from '../../../../services/confirmed.validator';
 import { RegistrationService } from 'src/app/services/registration.service';
+import { PasswordStrengthValidator} from '../../../../services/password-strength.validator';
 
 @Component({
   selector: 'app-update-password',
@@ -28,7 +29,7 @@ export class UpdatePasswordComponent implements OnInit {
 
   resetForm = this.fb.group({
     email: [this.route.snapshot.paramMap.get('email')],
-    password: ['',[Validators.required,Validators.minLength(8)]],
+    password: ['',[Validators.required,PasswordStrengthValidator]],
     confirmPassword: ['',[Validators.required,Validators.minLength(8)]],
   },{
     validator: ConfirmedValidator('password', 'confirmPassword')
