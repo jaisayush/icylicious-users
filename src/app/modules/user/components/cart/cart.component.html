@@ -41,7 +41,7 @@
 
 
     <div class="placeOrder-container">
-      <div>
+      <div id="table-container">
         <table id="order-calculation" >
           <tr *ngFor="let product of cart.products">
             <td *ngIf ="(product.status)" class="detail-cell">
@@ -52,15 +52,17 @@
               {{product.productQty * product.productPrice}}
             </td>
           </tr>
-          <tr>
-            <td><b>Total Price</b></td>
-            <td>
-               <b>{{this.cart.totalPrice}}</b>
-            </td>
-          </tr>
         </table>
-      </div>
 
+      </div>
+      <table>
+        <tr>
+          <td style="padding-left: 2rem ;"><b>Total Price</b></td>
+          <td style="padding-left: 2rem ;">
+             <b>{{this.cart.totalPrice}}</b>
+          </td>
+        </tr>
+      </table>
       <div>
         <button  [disabled]="(!placeOrder)" (click)= "showModel()" data-toggle="modal">Place Order</button>
       </div>
@@ -68,7 +70,17 @@
   </div>
 
 
-  <app-footer></app-footer>
+
+
+</div>
+<div>
+  <ng-container *ngIf="(this.cart && this.cart.products.length>0) else elseTemplate">
+    <app-footer style="position: relative; width: 100%"> </app-footer>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <app-footer style="position: absolute; width: 100%"> </app-footer>
+  </ng-template>
+  <!-- <app-footer></app-footer> -->
 </div>
 <!-- <app-footer></app-footer> -->
 
