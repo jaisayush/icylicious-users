@@ -12,7 +12,7 @@ export class LoginService {
     return this._http.post<{msg:String,id:String,usertoken:String,email:String}>(this._url,data)
   }
 
-  loggedIn(){
+  userLoggedIn(){
     return !!localStorage.getItem('userToken')
   }
 
